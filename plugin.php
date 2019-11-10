@@ -1,10 +1,10 @@
 <?php
 /**
- * Plugin Name: google-reviews — CGB Gutenberg Block Plugin
- * Plugin URI: https://github.com/ahmadawais/create-guten-block/
- * Description: google-reviews — is a Gutenberg plugin created via create-guten-block.
- * Author: mrahmadawais, maedahbatool
- * Author URI: https://AhmadAwais.com/
+ * Plugin Name: Ensuite
+ * Plugin URI:
+ * Description: A gutenberg block-suite of custom blocks
+ * Author: Zac Sanders (Endurain)
+ * Author URI: github.com/endurain
  * Version: 1.0.0
  * License: GPL2+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
