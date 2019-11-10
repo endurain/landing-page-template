@@ -10,4 +10,4 @@
  */
 
 import './block/block.js';
-import './googlereviews/block.js';
+import './custom-card/block.js';

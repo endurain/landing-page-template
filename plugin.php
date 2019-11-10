@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Ensuite
  * Plugin URI:
- * Description: A gutenberg block-suite of custom blocks
+ * Description: A Gutenberg suite of custom blocks for WordPress
  * Author: Zac Sanders (Endurain)
  * Author URI: github.com/endurain
  * Version: 1.0.0
