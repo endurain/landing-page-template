@@ -1,5 +1,9 @@
 This project was bootstrapped with [Create Guten Block](https://github.com/ahmadawais/create-guten-block).
 
+Custom Blocks contained in this plugin:
+1. Card. An editable card component with image, content and link media.
+
+
 Below you will find some information on how to run scripts.
 
 >You can find the most recent version of this guide [here](https://github.com/ahmadawais/create-guten-block).
