@@ -11,3 +11,4 @@
 
 import './block/block.js';
 import './custom-card/block.js';
+import './coupon/block.js';

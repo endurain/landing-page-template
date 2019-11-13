@@ -5,7 +5,7 @@
  * Description: A Gutenberg suite of custom blocks for WordPress
  * Author: Zac Sanders (Endurain)
  * Author URI: github.com/endurain
- * Version: 1.0.0
+ * Version: 1.1
  * License: GPL2+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
  *

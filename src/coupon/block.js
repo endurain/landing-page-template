@@ -1,5 +1,5 @@
 /**
- * BLOCK: Custom Card
+ * BLOCK: Coupon
  */
 
  const { RichText, MediaUpload, PlainText } = wp.editor;
@@ -10,9 +10,9 @@
  import './style.scss';
  import './editor.scss';
 
- registerBlockType('card-block/main', {
-   title: 'Card',
-   icon: 'heart',
+ registerBlockType('coupon-block/main', {
+   title: 'Coupon',
+   icon: 'tickets',
    category: 'common',
    attributes: {
      title: {
@@ -70,14 +70,14 @@
          <PlainText
            onChange={ content => setAttributes({ title: content }) }
            value={ attributes.title }
-           placeholder="Your card title"
+           placeholder="Your coupon title"
            className="heading"
          />
          <RichText
            onChange={ content => setAttributes({ body: content }) }
            value={ attributes.body }
            multiline="p"
-           placeholder="Your card text"
+           placeholder="Your coupon text"
            formattingControls={ ['bold', 'italic', 'underline'] }
            isSelected={ attributes.isSelected }
          />
