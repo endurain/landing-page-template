@@ -89,6 +89,7 @@
    save({ attributes }) {
 
      const cardImage = (src, alt) => {
+        // null returns nothing
        if(!src) return null;
 
        if(alt) {
@@ -102,7 +103,7 @@
        }
 
        // No alt set, so let's hide it from screen readers,
-       // null returns nothing
+
        return (
          <img
            className="card__image"
