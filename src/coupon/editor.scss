@@ -1,10 +1,16 @@
 @import '../common.scss';
 
-.gutenberg { // This may need to be .wp-block in WordPress 5+
+.wp-block {
 
   .container {
     border: 1px solid $gray;
     padding: 1rem;
+  }
+  .couponEditorWrapper {
+    display: flex;
+    .couponContentContainer, .couponImageContainer {
+      flex: 1 50%;
+    }
   }
 
   .button-container {

@@ -17,20 +17,20 @@
    attributes: {
      title: {
        source: 'text',
-       selector: '.card__title'
+       selector: '.coupon__title'
      },
      body: {
        type: 'array',
        source: 'children',
-       selector: '.card__body'
+       selector: '.coupon__body'
      },
      imageAlt: {
        attribute: 'alt',
-       selector: '.card__image'
+       selector: '.coupon__image'
      },
      imageUrl: {
        attribute: 'src',
-       selector: '.card__image'
+       selector: '.coupon__image'
      }
    },
    edit({ attributes, className, setAttributes }) {
@@ -61,26 +61,41 @@
 
      return (
        <div className="container">
-         <MediaUpload
-           onSelect={ media => { setAttributes({ imageAlt: media.alt, imageUrl: media.url }); } }
-           type="image"
-           value={ attributes.imageID }
-           render={ ({ open }) => getImageButton(open) }
-         />
-         <PlainText
-           onChange={ content => setAttributes({ title: content }) }
-           value={ attributes.title }
-           placeholder="Your coupon title"
-           className="heading"
-         />
-         <RichText
-           onChange={ content => setAttributes({ body: content }) }
-           value={ attributes.body }
-           multiline="p"
-           placeholder="Your coupon text"
-           formattingControls={ ['bold', 'italic', 'underline'] }
-           isSelected={ attributes.isSelected }
-         />
+        <div className="couponEditorWrapper">
+          <div className="couponContentContainer">
+             <PlainText
+               onChange={ content => setAttributes({ title: content }) }
+               value={ attributes.title }
+               placeholder="Your coupon title"
+               className="heading"
+             />
+             <RichText
+               onChange={ content => setAttributes({ body: content }) }
+               value={ attributes.body }
+               multiline="p"
+               placeholder="Your coupon text"
+               formattingControls={ ['bold', 'italic', 'underline'] }
+               isSelected={ attributes.isSelected }
+             />
+             <hr />
+             <RichText
+               onChange={ content => setAttributes({ body: content }) }
+               value={ attributes.body }
+               multiline="p"
+               placeholder="Your coupon text"
+               formattingControls={ ['bold', 'italic', 'underline'] }
+               isSelected={ attributes.isSelected }
+             />
+           </div>
+           <div className="couponImageContainer">
+             <MediaUpload
+               onSelect={ media => { setAttributes({ imageAlt: media.alt, imageUrl: media.url }); } }
+               type="image"
+               value={ attributes.imageID }
+               render={ ({ open }) => getImageButton(open) }
+             />
+           </div>
+         </div>
        </div>
      );
 
@@ -88,14 +103,14 @@
 
    save({ attributes }) {
 
-     const cardImage = (src, alt) => {
+     const couponImage = (src, alt) => {
         // null returns nothing
        if(!src) return null;
 
        if(alt) {
          return (
            <img
-             className="card__image"
+             className="coupon__image"
              src={ src }
              alt={ alt }
            />
@@ -106,7 +121,7 @@
 
        return (
          <img
-           className="card__image"
+           className="coupon__image"
            src={ src }
            alt=""
            aria-hidden="true"
@@ -115,14 +130,20 @@
      };
 
      return (
-       <div className="card">
-         { cardImage(attributes.imageUrl, attributes.imageAlt) }
-         <div className="card__content">
-           <h3 className="card__title">{ attributes.title }</h3>
-           <div className="card__body">
+       <div className="coupon__wrapper">
+
+         <div className="coupon__content">
+           <h3 className="coupon__title">{ attributes.title }</h3>
+           <div className="coupon__body">
              { attributes.body }
            </div>
+           <hr />
          </div>
+
+         <div class="coupon__image__wrapper">
+          { couponImage(attributes.imageUrl, attributes.imageAlt) }
+         </div>
+
        </div>
      );
    }

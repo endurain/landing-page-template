@@ -62,11 +62,18 @@
  * Can include things like variables and mixins
  * that are used across the project.
 */
-.gutenberg .container {
+.wp-block .container {
   border: 1px solid #dedede;
   padding: 1rem; }
 
-.gutenberg .button-container {
+.wp-block .couponEditorWrapper {
+  display: -ms-flexbox;
+  display: flex; }
+  .wp-block .couponEditorWrapper .couponContentContainer, .wp-block .couponEditorWrapper .couponImageContainer {
+    -ms-flex: 1 50%;
+        flex: 1 50%; }
+
+.wp-block .button-container {
   text-align: center;
   padding: 22% 0;
   background: #dedede;
@@ -74,11 +81,11 @@
   border-radius: 2px;
   margin: 0 0 1.2rem 0; }
 
-.gutenberg .heading {
+.wp-block .heading {
   font-size: 1.5rem;
   font-weight: 600; }
 
-.gutenberg .image {
+.wp-block .image {
   height: 15.7rem;
   width: 100%;
   -o-object-fit: cover;
