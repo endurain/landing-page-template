@@ -8,8 +8,12 @@
   }
   .couponEditorWrapper {
     display: flex;
+    text-align: center;
     .couponContentContainer, .couponImageContainer {
       flex: 1 50%;
+    }
+    hr {
+      max-width: 160px;
     }
   }
 

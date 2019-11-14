@@ -24,6 +24,11 @@
        source: 'children',
        selector: '.coupon__body'
      },
+     lowerBody: {
+       type: 'array',
+       source: 'children',
+       selector: '.lower__coupon__body'
+     },
      imageAlt: {
        attribute: 'alt',
        selector: '.coupon__image'
@@ -66,23 +71,23 @@
              <PlainText
                onChange={ content => setAttributes({ title: content }) }
                value={ attributes.title }
-               placeholder="Your coupon title"
+               placeholder="Coupon title"
                className="heading"
              />
              <RichText
                onChange={ content => setAttributes({ body: content }) }
                value={ attributes.body }
                multiline="p"
-               placeholder="Your coupon text"
+               placeholder="Upper coupon text"
                formattingControls={ ['bold', 'italic', 'underline'] }
                isSelected={ attributes.isSelected }
              />
              <hr />
              <RichText
-               onChange={ content => setAttributes({ body: content }) }
-               value={ attributes.body }
+               onChange={ content => setAttributes({ lowerBody: content }) }
+               value={ attributes.lowerBody }
                multiline="p"
-               placeholder="Your coupon text"
+               placeholder="Lower coupon text"
                formattingControls={ ['bold', 'italic', 'underline'] }
                isSelected={ attributes.isSelected }
              />
@@ -138,6 +143,7 @@
              { attributes.body }
            </div>
            <hr />
+           { attributes.lowerBody }
          </div>
 
          <div class="coupon__image__wrapper">
