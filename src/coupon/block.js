@@ -121,9 +121,7 @@
            />
          );
        }
-
        // No alt set, so let's hide it from screen readers,
-
        return (
          <img
            className="coupon__image"
@@ -136,20 +134,19 @@
 
      return (
        <div className="coupon__wrapper">
-
          <div className="coupon__content">
            <h3 className="coupon__title">{ attributes.title }</h3>
            <div className="coupon__body">
              { attributes.body }
            </div>
            <hr />
+           <div className="lower__body">
            { attributes.lowerBody }
+           </div>
          </div>
-
          <div class="coupon__image__wrapper">
           { couponImage(attributes.imageUrl, attributes.imageAlt) }
          </div>
-
        </div>
      );
    }
