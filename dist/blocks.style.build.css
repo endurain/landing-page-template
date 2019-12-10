@@ -39,3 +39,16 @@
   .coupon__wrapper .coupon__content, .coupon__wrapper .coupon__image__wrapper {
     -ms-flex: 1 50%;
         flex: 1 50%; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+.coupon__wrapper {
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 100% !important; }
+  .coupon__wrapper .coupon__content, .coupon__wrapper .coupon__image__wrapper {
+    -ms-flex: 1 50%;
+        flex: 1 50%; }
