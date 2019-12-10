@@ -2,9 +2,8 @@
  * BLOCK: Coupon
  */
 
- const { RichText, MediaUpload, PlainText } = wp.editor;
+ const { RichText, PlainText } = wp.editor;
  const { registerBlockType } = wp.blocks;
- const { Button } = wp.components;
 
  // Import our CSS files
  import './style.scss';
@@ -15,89 +14,53 @@
    icon: 'tickets',
    category: 'common',
    attributes: {
-     title: {
+     discount: {
        source: 'text',
-       selector: '.coupon__title'
+       selector: 'simple__coupon__discount'
      },
-     body: {
-       type: 'array',
-       source: 'children',
-       selector: '.coupon__body'
+     upperBody: {
+       source: 'text',
+       selector: 'simple__coupon__upper__body'
      },
      lowerBody: {
-       type: 'array',
-       source: 'children',
-       selector: '.lower__coupon__body'
+       source: 'text',
+       selector: 'simple__lower__coupon__body'
      },
-     imageAlt: {
-       attribute: 'alt',
-       selector: '.coupon__image'
+      disclaimer: {
+       source: 'text',
+       selector: 'simple__coupon__disclaimer'
      },
-     imageUrl: {
-       attribute: 'src',
-       selector: '.coupon__image'
-     }
    },
    edit({ attributes, className, setAttributes }) {
 
-     const getImageButton = (openEvent) => {
-       if(attributes.imageUrl) {
-         return (
-           <img
-             src={ attributes.imageUrl }
-             onClick={ openEvent }
-             className="image"
-           />
-         );
-       }
-       else {
-         return (
-           <div className="button-container">
-             <Button
-               onClick={ openEvent }
-               className="button button-large"
-             >
-               Pick an image
-             </Button>
-           </div>
-         );
-       }
-     };
-
      return (
        <div className="container">
-        <div className="couponEditorWrapper">
-          <div className="couponContentContainer">
+        <div className="simpleCouponEditorWrapper">
+          <div className="simpleCouponContentContainer">
              <PlainText
-               onChange={ content => setAttributes({ title: content }) }
-               value={ attributes.title }
-               placeholder="Coupon title"
-               className="heading"
+               onChange={ content => setAttributes({ discount: content }) }
+               value={ attributes.discount }
+               placeholder="Coupon Discount"
+               className="simple__coupon__discount"
              />
-             <RichText
-               onChange={ content => setAttributes({ body: content }) }
-               value={ attributes.body }
-               multiline="p"
+              <hr />
+             <PlainText
+               onChange={ content => setAttributes({ upperBody: content }) }
+               value={ attributes.upperBody }
                placeholder="Upper coupon text"
-               formattingControls={ ['bold', 'italic', 'underline'] }
-               isSelected={ attributes.isSelected }
+               className="simple__coupon__upper__body"
              />
-             <hr />
-             <RichText
+             <PlainText
                onChange={ content => setAttributes({ lowerBody: content }) }
                value={ attributes.lowerBody }
-               multiline="p"
                placeholder="Lower coupon text"
-               formattingControls={ ['bold', 'italic', 'underline'] }
-               isSelected={ attributes.isSelected }
+               className="simple__coupon__lower__body"
              />
-           </div>
-           <div className="couponImageContainer">
-             <MediaUpload
-               onSelect={ media => { setAttributes({ imageAlt: media.alt, imageUrl: media.url }); } }
-               type="image"
-               value={ attributes.imageID }
-               render={ ({ open }) => getImageButton(open) }
+             <PlainText
+               onChange={ content => setAttributes({ disclaimer: content }) }
+               value={ attributes.disclaimer }
+               placeholder="Disclaimer text"
+               className="simple__coupon__disclaimer"
              />
            </div>
          </div>
@@ -108,44 +71,30 @@
 
    save({ attributes }) {
 
-     const couponImage = (src, alt) => {
-        // null returns nothing
-       if(!src) return null;
-
-       if(alt) {
-         return (
-           <img
-             className="coupon__image"
-             src={ src }
-             alt={ alt }
-           />
-         );
-       }
-       // No alt set, so let's hide it from screen readers,
-       return (
-         <img
-           className="coupon__image"
-           src={ src }
-           alt=""
-           aria-hidden="true"
-         />
-       );
-     };
-
      return (
-       <div className="coupon__wrapper">
-         <div className="coupon__content">
-           <h3 className="coupon__title">{ attributes.title }</h3>
-           <div className="coupon__body">
-             { attributes.body }
+       <div className="simple__coupon__wrapper">
+        <div className="simple__coupon__dashed">
+           <div className="simple__coupon__content">
+             <h3 className="simple__coupon__discount">
+              { attributes.discount }
+             </h3>
+             <hr />
+             <div className="simple__coupon__upper__body">
+               { attributes.upperBody }
+             </div>
+             <div className="simple__coupon__lower__body">
+             { attributes.lowerBody }
+             </div>
            </div>
-           <hr />
-           <div className="lower__body">
-           { attributes.lowerBody }
+           <div class="simple__coupon__bottom">
+            <img
+              src="/wp-content/uploads/2019/12/neerings_logo_header-01-1.png"
+              alt="Neerings Logo"
+            />
+            <div className="simple__coupon__disclaimer">
+              { attributes.disclaimer }
+            </div>
            </div>
-         </div>
-         <div class="coupon__image__wrapper">
-          { couponImage(attributes.imageUrl, attributes.imageAlt) }
          </div>
        </div>
      );

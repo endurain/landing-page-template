@@ -1,7 +1,71 @@
-.coupon__wrapper {
-  display: flex;
-  max-width: 100%!important;
-    .coupon__content, .coupon__image__wrapper {
-      flex: 1 50%;
+.simple__coupon__wrapper {
+  background-color: #315a96;
+  padding:15px;
+  text-align: center;
+  margin:13px 0;
+  .simple__coupon__dashed {
+    border: 2px dashed #fff;
+    padding:5px;
+  }
+    .simple__coupon__content {
+      .simple__coupon__discount {
+        color:#fff;
+        font-size: 80px;
+        margin: 36px auto 0;
+      }
+      hr {
+        background-color: #fb2b3e;
+        border-color: #fb2b3e;
+        margin: 9px auto;
+        max-width: 128px;
+        height: 6px;
+      }
+      .simple__coupon__upper__body {
+        color:#fff;
+        font-size: 36px;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+      .simple__coupon__lower__body {
+        color:#fff;
+        text-transform: uppercase;
+      }
     }
+    .simple__coupon__bottom {
+      display: flex;
+      justify-content: space-between;
+      img {
+        max-width: 250px;
+        padding:12px;
+      }
+      .simple__coupon__disclaimer {
+        display: flex;
+        align-items: flex-end;
+        color:#fff;
+        font-size: 11px;
+        padding:12px;
+      }
+    }
+}
+@media only screen and (max-width:480px) {
+  .simple__coupon__bottom {
+    display:block!important;
+    img {
+      margin:0 auto;
+    }
+  }
+}
+@media only screen and (min-width:1000px) {
+  .simple__coupon__bottom {
+    padding-top:20px;
+  }
+  .simple__coupon__upper__body {
+    font-size: 45px;
+  }
+  .simple__coupon__disclaimer {
+    text-align: left;
+  }
+  .simple__coupon__lower__body {
+    font-size: 24px;
+  }
 }
