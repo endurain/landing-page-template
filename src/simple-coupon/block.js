@@ -15,20 +15,24 @@
    category: 'common',
    attributes: {
      discount: {
-       source: 'text',
-       selector: 'simple__coupon__discount'
+       type: 'string',
+       source: 'html',
+       selector: 'h3.simple__coupon__discount'
      },
      upperBody: {
-       source: 'text',
-       selector: 'simple__coupon__upper__body'
+       type: 'string',
+       source: 'html',
+       selector: 'h3.simple__coupon__upper__body'
      },
      lowerBody: {
-       source: 'text',
-       selector: 'simple__lower__coupon__body'
+       type: 'string',
+       source: 'html',
+       selector: 'p.simple__coupon__lower__body'
      },
       disclaimer: {
-       source: 'text',
-       selector: 'simple__coupon__disclaimer'
+        type: 'string',
+       source: 'html',
+       selector: 'p.simple__coupon__disclaimer'
      },
    },
    edit({ attributes, className, setAttributes }) {
@@ -79,21 +83,21 @@
               { attributes.discount }
              </h3>
              <hr />
-             <div className="simple__coupon__upper__body">
+             <h3 className="simple__coupon__upper__body">
                { attributes.upperBody }
-             </div>
-             <div className="simple__coupon__lower__body">
+             </h3>
+             <p className="simple__coupon__lower__body">
              { attributes.lowerBody }
-             </div>
+             </p>
            </div>
-           <div class="simple__coupon__bottom">
+           <div className="simple__coupon__bottom">
             <img
               src="/wp-content/uploads/2019/12/neerings_logo_header-01-1.png"
               alt="Neerings Logo"
             />
-            <div className="simple__coupon__disclaimer">
+            <p className="simple__coupon__disclaimer">
               { attributes.disclaimer }
-            </div>
+            </p>
            </div>
          </div>
        </div>
