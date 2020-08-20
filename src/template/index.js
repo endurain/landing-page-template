@@ -2,16 +2,16 @@
  * BLOCK: Coupon
  */
 
- const { RichText, MediaUpload, PlainText } = wp.editor;
+ const { RichText, MediaUpload, InspectorControls } = wp.editor;
  const { registerBlockType } = wp.blocks;
- const { Button } = wp.components;
+ const { Button, ColorPalette } = wp.components;
 
  // Import our CSS files
  import './style.scss';
  import './editor.scss';
 
- registerBlockType('coupon-block/main', {
-   title: 'Coupon',
+ registerBlockType('template/main', {
+   title: 'PPC Template',
    icon: 'tickets',
    category: 'common',
    attributes: {
@@ -34,8 +34,7 @@
        selector: '.coupon__image'
      },
      imageUrl: {
-       attribute: 'src',
-       selector: '.coupon__image'
+       attribute: 'src'
      }
    },
    edit({ attributes, className, setAttributes }) {
@@ -68,12 +67,6 @@
        <div className="container">
         <div className="couponEditorWrapper">
           <div className="couponContentContainer">
-             <PlainText
-               onChange={ content => setAttributes({ title: content }) }
-               value={ attributes.title }
-               placeholder="Coupon title"
-               className="heading"
-             />
              <RichText
                onChange={ content => setAttributes({ body: content }) }
                value={ attributes.body }
@@ -82,7 +75,6 @@
                formattingControls={ ['bold', 'italic', 'underline'] }
                isSelected={ attributes.isSelected }
              />
-             <hr />
              <RichText
                onChange={ content => setAttributes({ lowerBody: content }) }
                value={ attributes.lowerBody }
@@ -96,7 +88,7 @@
              <MediaUpload
                onSelect={ media => { setAttributes({ imageAlt: media.alt, imageUrl: media.url }); } }
                type="image"
-               value={ attributes.imageID }
+               value={ attributes.imageUrl }
                render={ ({ open }) => getImageButton(open) }
              />
            </div>
@@ -108,45 +100,19 @@
 
    save({ attributes }) {
 
-     const couponImage = (src, alt) => {
-        // null returns nothing
-       if(!src) return null;
-
-       if(alt) {
-         return (
-           <img
-             className="coupon__image"
-             src={ src }
-             alt={ alt }
-           />
-         );
-       }
-       // No alt set, so let's hide it from screen readers,
-       return (
-         <img
-           className="coupon__image"
-           src={ src }
-           alt=""
-           aria-hidden="true"
-         />
-       );
-     };
-
      return (
-       <div className="coupon__wrapper">
+      <div class="coupon__image__wrapper" style={{backgroundImage: "url(" + attributes.imageUrl + ")"}} >
+       
          <div className="coupon__content">
            <h3 className="coupon__title">{ attributes.title }</h3>
            <div className="coupon__body">
              { attributes.body }
            </div>
-           <hr />
            <div className="lower__body">
            { attributes.lowerBody }
            </div>
          </div>
-         <div class="coupon__image__wrapper">
-          { couponImage(attributes.imageUrl, attributes.imageAlt) }
-         </div>
+         
        </div>
      );
    }

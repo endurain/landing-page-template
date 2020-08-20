@@ -9,7 +9,6 @@
  * Webpack is compiling as the input file.
  */
 
-import './block/block.js';
-import './custom-card/block.js';
-import './coupon/block.js';
-import './simple-coupon/block.js';
+
+import './template/index.js';
+
