@@ -16,9 +16,9 @@ while ( have_posts() ) :
 
   ?>
   
-  <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+  <article class="template-wrap">
     <header class="page-header">
-      <!-- <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?> -->
+
     </header>
     <div class="page-content">
       <?php the_content(); ?>

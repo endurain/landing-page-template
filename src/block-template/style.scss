@@ -1,7 +1,13 @@
-.coupon__wrapper {
-  display: flex;
-  max-width: 100%!important;
-    .coupon__content, .coupon__image__wrapper {
-      flex: 1 50%;
-    }
+
+
+.ppclanding-template {
+  background-color: $light-gray;
+
+  .template-wrap {
+    max-width: 1500px;
+    margin: 0 auto;
+
+  }
 }
+
+

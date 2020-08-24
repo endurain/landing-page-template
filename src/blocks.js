@@ -10,5 +10,5 @@
  */
 
 
-import './template/index.js';
+import './block-template/index.js';
 

@@ -1,10 +1,12 @@
 /**
- * BLOCK: Coupon
+ * Template
  */
 
- const { RichText, MediaUpload, InspectorControls } = wp.editor;
- const { registerBlockType } = wp.blocks;
- const { Button, ColorPalette } = wp.components;
+ 
+const { RichText, MediaUpload, InspectorControls } = wp.editor;
+const { registerBlockType } = wp.blocks;
+const { Button, ColorPalette } = wp.components;
+
 
  // Import our CSS files
  import './style.scss';
@@ -12,38 +14,28 @@
 
  registerBlockType('template/main', {
    title: 'PPC Template',
-   icon: 'tickets',
+   icon: 'smiley',
    category: 'common',
    attributes: {
-     title: {
-       source: 'text',
-       selector: '.coupon__title'
+     heroImage: {
+      type: 'string',
+      source: 'attribute',
+      selector: 'img',
+      attribute: 'src',
      },
-     body: {
-       type: 'array',
-       source: 'children',
-       selector: '.coupon__body'
-     },
-     lowerBody: {
-       type: 'array',
-       source: 'children',
-       selector: '.lower__coupon__body'
-     },
-     imageAlt: {
-       attribute: 'alt',
-       selector: '.coupon__image'
-     },
-     imageUrl: {
-       attribute: 'src'
-     }
+     heroAlt: {
+      attribute: 'alt',
+      selector: '.coupon__image'
+    },
    },
-   edit({ attributes, className, setAttributes }) {
+
+   edit({ attributes, setAttributes }) {
 
      const getImageButton = (openEvent) => {
-       if(attributes.imageUrl) {
+       if(attributes.heroImage) {
          return (
            <img
-             src={ attributes.imageUrl }
+             src={ attributes.heroImage }
              onClick={ openEvent }
              className="image"
            />
@@ -64,56 +56,34 @@
      };
 
      return (
-       <div className="container">
-        <div className="couponEditorWrapper">
-          <div className="couponContentContainer">
-             <RichText
-               onChange={ content => setAttributes({ body: content }) }
-               value={ attributes.body }
-               multiline="p"
-               placeholder="Upper coupon text"
-               formattingControls={ ['bold', 'italic', 'underline'] }
-               isSelected={ attributes.isSelected }
-             />
-             <RichText
-               onChange={ content => setAttributes({ lowerBody: content }) }
-               value={ attributes.lowerBody }
-               multiline="p"
-               placeholder="Lower coupon text"
-               formattingControls={ ['bold', 'italic', 'underline'] }
-               isSelected={ attributes.isSelected }
-             />
-           </div>
-           <div className="couponImageContainer">
+
+      <div>
+         <div className="couponImageContainer">
              <MediaUpload
-               onSelect={ media => { setAttributes({ imageAlt: media.alt, imageUrl: media.url }); } }
+               onSelect={ media => { setAttributes({ heroImage: media.url }); } }
                type="image"
-               value={ attributes.imageUrl }
+               value={ attributes.heroImage }
                render={ ({ open }) => getImageButton(open) }
              />
-           </div>
-         </div>
-       </div>
+          </div>
+      </div>
+       
      );
 
    },
 
+  
+
    save({ attributes }) {
 
      return (
-      <div class="coupon__image__wrapper" style={{backgroundImage: "url(" + attributes.imageUrl + ")"}} >
        
-         <div className="coupon__content">
-           <h3 className="coupon__title">{ attributes.title }</h3>
-           <div className="coupon__body">
-             { attributes.body }
-           </div>
-           <div className="lower__body">
-           { attributes.lowerBody }
-           </div>
-         </div>
-         
-       </div>
+      <div>
+        <div className="hero-image">
+          <img src={ attributes.heroImage } />
+        </div>
+      </div>
+
      );
    }
  });
