@@ -1,89 +1,74 @@
 /**
- * Template
+ *  BLOCK: PPC Template
+ *  ---
  */
 
- 
-const { RichText, MediaUpload, InspectorControls } = wp.editor;
-const { registerBlockType } = wp.blocks;
-const { Button, ColorPalette } = wp.components;
+//  Import CSS.
+// import './editor.css'
 
+const { __ } = wp.i18n
+const { registerBlockType } = wp.blocks
+const { RichText } = wp.blockEditor
 
- // Import our CSS files
- import './style.scss';
- import './editor.scss';
+registerBlockType('cgb/block-google-reviews', {
+  title: __( 'PCC Template' ),
+  icon: 'shield',
+  category: 'layout',
+  keywords: [
+    __( 'ppc' ),
+    __( 'template' ),
+  ],
 
- registerBlockType('template/main', {
-   title: 'PPC Template',
-   icon: 'smiley',
-   category: 'common',
-   attributes: {
-     heroImage: {
-      type: 'string',
-      source: 'attribute',
-      selector: 'img',
-      attribute: 'src',
-     },
-     heroAlt: {
-      attribute: 'alt',
-      selector: '.coupon__image'
+  // Enable or disable support for low-level features
+  supports: {
+    // Turn off ability to edit HTML of block content
+    html: false,
+    // Turn off reusable block feature
+    reusable: false,
+    // Add alignwide and alignfull options
+    align: false
+  },
+
+  // Set up data model 
+  attributes: {
+    heroHeading: {
+        type: 'string',
+        selector: 'js-hero-text'
+      },
+    heroSubText: {
+        type: 'string',
+        selector: 'js-hero-subtext',
+        multiline: 'p'
     },
-   },
+  },
 
-   edit({ attributes, setAttributes }) {
+  // The UI for the WordPress editor
+  edit: props => {
+     // Pull out the props we'll use
+  const { attributes, className, setAttributes } = props
 
-     const getImageButton = (openEvent) => {
-       if(attributes.heroImage) {
-         return (
-           <img
-             src={ attributes.heroImage }
-             onClick={ openEvent }
-             className="image"
-           />
-         );
-       }
-       else {
-         return (
-           <div className="button-container">
-             <Button
-               onClick={ openEvent }
-               className="button button-large"
-             >
-               Pick an image
-             </Button>
-           </div>
-         );
-       }
-     };
-
-     return (
-
-      <div>
-         <div className="couponImageContainer">
-             <MediaUpload
-               onSelect={ media => { setAttributes({ heroImage: media.url }); } }
-               type="image"
-               value={ attributes.heroImage }
-               render={ ({ open }) => getImageButton(open) }
-             />
-          </div>
-      </div>
-       
-     );
-
-   },
-
-  
-
-   save({ attributes }) {
-
-     return (
-       
-      <div>
-        <div className="hero-image">
-          <img src={ attributes.heroImage } />
+    return (
+        <div>
+            <RichText
+                className="js-hero-text"
+                value={attributes.heroHeading}
+                onChange={value => setAttributes({ heroHeading: value })}
+                tagName="h2"
+                placeholder="Hero Heading"
+            />
+            <RichText
+                className="js-hero-subtext"
+                value={attributes.heroSubText}
+                onChange={value => setAttributes({ heroSubText: value })}
+                tagName="h3"
+                placeholder="Hero Sub Text"
+            />
         </div>
-      </div>
+    )
+  },
 
-     );
-   }
- });
+  // The output on the live site
+  save: props => {
+    return null
+  }
+})

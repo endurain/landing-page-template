@@ -22,6 +22,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 require_once plugin_dir_path( __FILE__ ) . 'src/init.php';
 
+// Load dynamic blocks
+require_once plugin_dir_path( __FILE__ ) . 'src/index.php';
+
 /**
  * Class to add our PPC Template to WordPress. 
  */
