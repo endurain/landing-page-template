@@ -82,7 +82,9 @@ function google_reviews_cgb_block_assets() { // phpcs:ignore
 			'editor_script' => 'google_reviews-cgb-block-js',
 			// Enqueue blocks.editor.build.css in the editor only.
 			'editor_style'  => 'google_reviews-cgb-block-editor-css',
-		)
+			// Call our render php function to display front-end HTML
+			'render_callback'	=>  'render_dynamic_template',
+		), 
 	);
 }
 

@@ -1,0 +1,121 @@
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+.ppclanding-template {
+  background-color: #e8e8e8;
+}
+.ppclanding-template section {
+  padding: 0;
+}
+  
+  .gform_wrapper {
+    width:100%;
+  }
+
+  .gform_body li {
+    padding-right: 0!important;
+  }
+
+  .gform_body input {
+    width:100%!important;
+    height: 50px;
+  }
+
+  .gform_body label {
+    display: none!important;
+  }
+
+  .gform_footer {
+    padding: 0!important;
+  }
+
+  .gform_footer .gform_button {
+    width:100%!important;
+  }
+
+  .ppclanding-template .template-wrap {
+    max-width: 1500px;
+    margin: 0 auto;
+    background-color: #fff;
+  }
+
+  .ppclanding-template .template-wrap ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    margin:0;
+
+    /* for mobile possibly */
+    /* white-space: nowrap;
+    flex-wrap: wrap; */
+  }
+
+  .ppclanding-template .template-wrap ul a {
+    text-decoration:none;
+  }
+
+  .ppc-navigation {
+    padding: 30px 20px;
+    transition: .3s;
+  }
+
+  .ppc-fixed .ppc-navigation {
+    padding: 20px 20px;
+  }
+
+  .ppc-fixed {
+    position: fixed;
+    top: 0;
+    max-width: 1500px;
+    width: 100%;
+    background-color: #0C658C;
+    z-index: 900;
+    transition: .3s;
+    color: #fff;
+  }
+
+  .ppc-hero {
+    position: relative;
+  }
+
+  #one {
+    background-color: #A3539B;
+  }
+  #two {
+    background-color: #F49733;
+  }
+
+  .ppc-section-one-content {
+    list-style: none;
+    display: flex;
+    color: #fff;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    min-height: 300px;
+  }
+
+  @media only screen and (min-width:800px) {
+    
+    .ppc-hero .ppc-hero-content {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+    .ppc-section-one-content {
+      flex-direction: row;
+      height: 100%;
+    }
+    .ppc-hero-form {
+      width: 400px;
+    }
+
+  }
